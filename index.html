@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Scissor Paper</title>
+    <style>
+        body{
+            background-color: rgb(28, 27, 27);
+        }
+        .container{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1{
+            font-size: 4rem;
+            color: white;
+        }
+
+        .flexcontainer{
+            display: flex;
+            gap: 50px;
+        }
+        .btn{
+            padding: 10px;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            background-color: rgb(202, 151, 56);
+            border: 0;
+            color: white;
+        }
+
+        .btn:hover{
+            background-color: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <h1>Rock Scissor Paper</h1>
+        <div class = "flexcontainer">
+            <button id = "rock" class = "btn">Rock</button>
+            <button id = "scissor" class = "btn">Scissor</button>
+            <button id = "paper" class = "btn">Paper</button>
+        </div>
+    </div>
+    
+
+    <script>
+        let rock = document.getElementById("rock");
+        let scissor = document.getElementById("scissor");
+        let paper = document.getElementById("paper");
+
+        rock.onclick = function(){
+            yourPick("rock");
+        }
+
+        scissor.onclick = function(){
+            yourPick("scissor");
+        }
+
+        paper.onclick = function(){
+            yourPick("paper");
+        }
+
+        function computerPick(){
+            let randomNumber = Math.floor(Math.random()*3)+1;
+            let computerMove = "";
+
+            switch(randomNumber){
+                case 1:
+                    computerMove = "rock";
+                    break;
+                case 2: 
+                    computerMove = "scissor";
+                    break;
+                case 3:
+                    computerMove = "paper";
+            }
+            return computerMove;
+        }
+
+        function yourPick(yourMove){
+            let computerChoice = computerPick();
+            let result = "";
+
+            if(yourMove === "rock"){
+                if(computerChoice === "rock"){
+                    result = "Tie.";
+                }else if(computerChoice === "scissor"){
+                    result = "Win.";
+                }else if(computerChoice === "paper"){
+                    result = "Lose."
+                }
+                alert(`You picked ${yourMove} and computer picked ${computerChoice} so ${result}`);
+            }
+            else if(yourMove === "scissor"){
+                if(computerChoice === "rock"){
+                    result = "Lose.";
+                }else if(computerChoice === "scissor"){
+                    result = "Tie.";
+                }else if(computerChoice === "paper"){
+                    result = "Win."
+                }
+                alert(`You picked ${yourMove} and computer picked ${computerChoice} so ${result}`);
+            }
+            else if(yourMove === "paper"){
+                if(computerChoice === "rock"){
+                    result = "Win.";
+                }else if(computerChoice === "scissor"){
+                    result = "Lose.";
+                }else if(computerChoice === "paper"){
+                    result = "Tie."
+                }
+                alert(`You picked ${yourMove} and computer picked ${computerChoice} so ${result}`);
+            }
+        }
+    </script>
+</body>
+</html>
